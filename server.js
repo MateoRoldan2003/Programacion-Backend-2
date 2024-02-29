@@ -1,3 +1,4 @@
+// server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -18,15 +19,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(passportMiddleware.initialize());
 
-const authRoutes = require('./routes/auth');
-const sessionsRoutes = require('./routes/api/sessions');
-const productsRoutes = require('./routes/api/products');
+const rutasAutenticacion = require('./rutas/autenticacion');
+app.use('/autenticacion', rutasAutenticacion);
 
-app.use('/auth', authRoutes);
-app.use('/api/sessions', sessionsRoutes);
-app.use('/api/products', productsRoutes);
-
-const PORT = config.port;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+const PUERTO = config.puerto;
+app.listen(PUERTO, () => {
+  console.log(`El servidor está corriendo en el puerto ${PUERTO}`);
 });
+
