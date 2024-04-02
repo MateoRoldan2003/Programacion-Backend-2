@@ -19,7 +19,10 @@
     "nodemailer": "^6.9.12"
   },
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "chai": "^5.1.0",
+    "mocha": "^10.4.0",
+    "nodemon": "^2.0.12",
+    "supertest": "^6.3.4"
   },
   "engines": {
     "node": ">=14.0.0"
