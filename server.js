@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const config = require('./config');
 const passportMiddleware = require('./middlewares/passportMiddleware');
 const errorMiddleware = require('./middlewares/errorMiddleware');
+const multer = require('multer');
 
 const app = express();
 
@@ -18,6 +19,16 @@ app.use(session({ secret: config.sessionSecret, resave: true, saveUninitialized:
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passportMiddleware.initialize());
+
+const upload = multer({ dest: 'uploads/' });
+
+app.post('/api/pets/withimage', upload.single('image'), (req, res) => {
+
+  const petName = req.body.name;
+  const petImage = req.file;
+
+  res.status(201).json({ pet: { name: petName, image: petImage } });
+});
 
 const usersRoutes = require('./routes/api/users');
 app.use('/api/users', usersRoutes);

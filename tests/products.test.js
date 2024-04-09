@@ -3,7 +3,7 @@ const app = require('../server');
 const expect = require('chai').expect;
 
 describe('Products Router', () => {
-  it('Should return all products', (done) => {
+  it('Debería devolver todos los productos.', (done) => {
     request(app)
       .get('/api/products')
       .expect(200)
