@@ -10,7 +10,6 @@ class ProductFactory {
   
   module.exports = ProductDAO;
   
-  // dto.js
   class ProductDTO {
   }
   
